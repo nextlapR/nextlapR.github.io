@@ -1,14 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>카트라이더: 슈퍼러쉬 메모리얼</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Code Redeemer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Redeem Your Coupon</h1>
+        <form id="coupon-form">
+            <input type="text" id="coupon-code" placeholder="Enter your coupon code" required>
+            <button type="submit">Redeem</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
 
-<h1>Thank you!</h1>
-<p>You are best player.</p>
-<h1>Since</h1>
-<p>2011.3.11<p>
+    <script>
+        document.getElementById('coupon-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
+            const couponCode = document.getElementById('coupon-code').value;
+            const messageDiv = document.getElementById('message');
+
+            // Simple validation and response simulation
+            if (couponCode.trim() === '') {
+                messageDiv.textContent = 'Please enter a coupon code.';
+                messageDiv.style.color = 'red';
+            } else if (couponCode === 'SAVE10') {
+                messageDiv.textContent = 'Congratulations! You've redeemed 10% off!';
+                messageDiv.style.color = 'green';
+            } else {
+                messageDiv.textContent = 'Invalid coupon code. Please try again.';
+                messageDiv.style.color = 'red';
+            }
+        });
+    </script>
 </body>
 </html>
