@@ -1,93 +1,139 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coupon Code Redeemer</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Game Showcase</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
-        .container {
-            background: white;
+        .slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 20px;
-            text-align: center;
         }
 
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+        .slides {
+            display: none;
+            width: 100%;
         }
 
-        input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .slideshow-container img {
+            width: 100%;
+            border-radius: 8px;
         }
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
+        .prev, .next {
             cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 0 3px 3px 0;
+            user-select: none;
         }
 
-        button:hover {
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #4CAF50;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .buttons a:hover {
             background-color: #45a049;
-        }
-
-        .message {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #333;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>쿠폰코드 입력</h1>
-        <form id="coupon-form">
-            <input type="text" id="coupon-code" placeholder="쿠폰코드..." required>
-            <button type="submit">Redeem</button>
-        </form>
-        <div class="message" id="message"></div>
+    <h1>Welcome to the Game Showcase</h1>
+
+    <div class="slideshow-container">
+        <div class="slides">
+            <img src="image1.jpg" alt="Game Screenshot 1">
+        </div>
+        <div class="slides">
+            <img src="image2.jpg" alt="Game Screenshot 2">
+        </div>
+        <div class="slides">
+            <img src="image3.jpg" alt="Game Screenshot 3">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="buttons">
+        <a href="https://example.com/download" target="_blank">Download</a>
+        <a href="https://example.com/about" target="_blank">About</a>
+        <a href="https://example.com/contact" target="_blank">Contact</a>
     </div>
 
     <script>
-        document.getElementById('coupon-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        let slideIndex = 0;
+        showSlides(slideIndex);
 
-            const couponCode = document.getElementById('coupon-code').value;
-            const messageDiv = document.getElementById('message');
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-            // Simple validation and response simulation
-            if (couponCode.trim() === '') {
-                messageDiv.textContent = '쿠폰코드를 입력해 주십시오.';
-                messageDiv.style.color = 'red';
-            } else if (couponCode === 'SAVE10') {
-                messageDiv.textContent = '코드 입력에 성공했습니다.';
-                messageDiv.style.color = 'green';
-            } else {
-                messageDiv.textContent = '잘못된 코드 입니다.';
-                messageDiv.style.color = 'red';
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slides");
+
+            if (n >= slides.length) {
+                slideIndex = 0;
             }
-        });
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex].style.display = "block";
+        }
+
+        // Automatic Slideshow
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000); // Change every 5 seconds
     </script>
 </body>
 </html>
