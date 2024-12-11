@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,9 +32,9 @@
         }
 
         input[type="text"] {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
-            margin: 0px 0;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
@@ -78,13 +78,13 @@
 
             // Simple validation and response simulation
             if (couponCode.trim() === '') {
-                messageDiv.textContent = 'Please enter a coupon code.';
+                messageDiv.textContent = '쿠폰코드를 입력해 주십시오.';
                 messageDiv.style.color = 'red';
             } else if (couponCode === 'SAVE10') {
-                messageDiv.textContent = 'Congratulations! You've redeemed 10% off!';
+                messageDiv.textContent = '코드 입력에 성공했습니다.';
                 messageDiv.style.color = 'green';
             } else {
-                messageDiv.textContent = 'Invalid coupon code. Please try again.';
+                messageDiv.textContent = '잘못된 코드 입니다.';
                 messageDiv.style.color = 'red';
             }
         });
